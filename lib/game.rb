@@ -48,9 +48,9 @@ class Game
 
 private
 
-attr_writer :current_turn
+  attr_writer :current_turn
 
-def opponent_of(the_player)
-  @players.select { |player| player != the_player }.first # what is this?
-end
+  def opponent_of(the_player)
+   @players.select { |player| player != the_player }.first # what is this?
+  end
 end
