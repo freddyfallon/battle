@@ -18,4 +18,25 @@ describe Game do
     end
   end
 
+  describe '#hp_zero?' do
+    context 'hit points are full' do
+      before do
+        allow(bill).to receive(:hit_points).and_return(60)
+        allow(bob).to receive(:hit_points).and_return(60)
+      end
+      it 'returns true if either player has 0hp' do
+        expect(game.hp_zero?(bill)).to be false
+      end
+    end
+
+    context ' hit points are empty' do
+      before do
+        allow(bill).to receive(:hit_points).and_return(0)
+        allow(bob).to receive(:hit_points).and_return(60)
+      end
+      it 'returns true if either player has 0hp' do
+        expect(game.hp_zero?(bill)).to be true
+      end
+    end
+  end
 end

@@ -28,6 +28,16 @@ class Game
     player.receive_damage
   end
 
+  def lose_game
+    if hp_zero?(current_turn)
+      "#{current_turn.name} YOU LOSE!"
+    end
+  end
+
+  def hp_zero?(player)
+    player.hit_points > 0 ? false : true
+  end
+
 private
 
 attr_writer :current_turn
