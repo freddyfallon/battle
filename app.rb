@@ -13,18 +13,19 @@ class Battle < Sinatra::Base
     @player_1 = Player.new(params[:player_1])
     @player_2 = Player.new(params[:player_2])
     $game = Game.new(@player_1,@player_2)
-    redirect '/play'
+    redirect '/player_1_turn'
   end
 
-  get '/play' do
+  get '/player_1_turn' do
     @game = $game
-    erb(:play)
+    erb(:player_1_turn)
   end
 
-  get '/attack' do
+  get '/attack_player_2' do
     @game = $game
-    @game.attack(@game.player_2)
-    erb(:attack)
+    @game.attack(@game.other_player)
+    @game.switch_turns
+    erb(:attack_player_2)
   end
 
     # start the server if ruby file executed directly

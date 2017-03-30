@@ -12,4 +12,10 @@ describe Game do
     end
   end
 
+  describe '#current_turn' do
+    it 'starts as player 1' do
+      expect(game.current_turn).to eq bill
+    end
+  end
+
 end
